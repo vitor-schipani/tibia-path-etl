@@ -1,0 +1,16 @@
+name: tibia-etl
+
+services:
+  tibiadata:
+    image: ghcr.io/tibiadata/tibiadata-api-go:latest
+    ports:
+      - "11000:8080"
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "11050:6379"
+    volumes:
+      - redisdata:/data
+
+volumes:
+  redisdata:

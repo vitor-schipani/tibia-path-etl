@@ -1,0 +1,7 @@
+name: tibia-etl
+
+services:
+  tibiadata:
+    image: ghcr.io/tibiadata/tibiadata-api-go:latest
+    ports:
+      - "11000:8080"

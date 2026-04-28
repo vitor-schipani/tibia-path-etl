@@ -1,6 +1,17 @@
 name: tibia-etl
 
 services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "11100:5432"
+
   tibiadata:
     image: ghcr.io/tibiadata/tibiadata-api-go:latest
     ports:
@@ -13,4 +24,5 @@ services:
       - redisdata:/data
 
 volumes:
+  pgdata:
   redisdata:

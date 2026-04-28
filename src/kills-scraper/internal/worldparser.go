@@ -2,7 +2,7 @@ package internal
 
 import "encoding/json"
 
-type worldsResponse struct {
+type WorldsResponse struct {
 	Worlds struct {
 		RegularWorlds []struct {
 			Name string `json:"name"`
@@ -11,7 +11,7 @@ type worldsResponse struct {
 }
 
 func ParseWorldsResponse(data []byte) ([]string, error) {
-	var r worldsResponse
+	var r WorldsResponse
 	err := json.Unmarshal(data, &r)
 	if err != nil {
 		return nil, err
